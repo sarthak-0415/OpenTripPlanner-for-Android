@@ -76,6 +76,8 @@ public class Server {
         return zoomSet;
     }
 
+    private String serverName ;
+
     public Server() {
         super();
     }
@@ -93,11 +95,12 @@ public class Server {
         setContactName(s.getContactName());
         setContactEmail(s.getContactEmail());
         setOffersBikeRental(s.getOffersBikeRental());
+        setServerName(s.getServerName());
     }
 
     public Server(Long d, String region, String baseURL, String bounds,
             String language, String contactName, String contactEmail, String center, String zoom,
-            String offersBikeRental)
+            String offersBikeRental, String serverName)
             throws ServerListParsingException {
         super();
         setDate(d);
@@ -110,11 +113,12 @@ public class Server {
         setContactName(contactName);
         setContactEmail(contactEmail);
         setBikeRental(offersBikeRental);
+        setServerName(serverName);
     }
 
     public Server(String region, String baseURL, String bounds,
             String language, String contactName, String contactEmail, String center, String zoom,
-            String offersBikeRental)
+            String offersBikeRental, String serverName)
             throws ServerListParsingException {
         super();
         setRegion(region);
@@ -126,6 +130,7 @@ public class Server {
         setContactName(contactName);
         setContactEmail(contactEmail);
         setBikeRental(offersBikeRental);
+        setServerName(serverName);
     }
 
     /*
@@ -145,6 +150,7 @@ public class Server {
         this.contactEmail = applicationContext.getResources()
                 .getString(R.string.server_checker_info_custom_server_unknown_email);
         this.offersBikeRental = false;
+        this.serverName = "unknown";
     }
 
     public String getRegion() {
@@ -407,6 +413,14 @@ public class Server {
 
     public void setBikeRental(String bikeRental) {
         this.offersBikeRental = Boolean.parseBoolean(bikeRental);
+    }
+
+    public String getServerName() {
+        return serverName;
+    }
+
+    public void setServerName(String serverName) {
+        this.serverName = serverName;
     }
 
 }
